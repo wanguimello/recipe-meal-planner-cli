@@ -1,7 +1,0 @@
-from models.base import Base, engine
-import models.recipe
-import models.ingredient
-import models.meal_plan
-
-def init_db():
-    Base.metadata.create_all(bind=engine)
