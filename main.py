@@ -3,7 +3,7 @@ from models.recipe import Recipe
 #from models.ingredient import Ingredient
 #from models.meal_plan import MealPlan
 from database.setup import session
-
+from models.meal_plan_recipes import Meal_Plan_Recipes  
 
 def main_menu():
     while True:
@@ -11,7 +11,8 @@ def main_menu():
         print("1. Add a Recipe")
         print("2. View Recipes")
         print("3. Create a Meal Plan")
-        print("4. Exit")
+        print("4. View Meal Plans") 
+        print("5. Exit")
 
         choice = input("Choose an option: ")
         if choice == '1':
@@ -20,7 +21,9 @@ def main_menu():
             view_recipes()
         elif choice == '3':
             create_meal_plan()
-        elif choice == '4':
+        elif choice == "4":
+            view_meal_plans()
+        elif choice == '5':
             print("Goodbye!")
             sys.exit()
         else:
@@ -44,6 +47,9 @@ def view_recipes():
 
 def create_meal_plan():
     print("Feature to create a meal plan coming soon...")
+
+def view_meal_plans():
+    print("Feature to view meal plans coming soon...")
 
 if __name__ == "__main__":
      main_menu()                                                        
