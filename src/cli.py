@@ -1,48 +1,53 @@
+# src/cli.py
 import sys
-from models.recipe import Recipe
-from models.ingredient import Ingredient
-from models.mealplan import MealPlan
-from database.setup import session
+from models.base import init_db
+from models.recipe import Recipe  # Example model
+from models.ingredient import Ingredient  # Example model
+from models.meal_plan import MealPlan  # Example model
+from sqlalchemy.orm import Session
+from models.base import SessionLocal
 
 def main_menu():
-    while True:
-        print("Welcome to the Recipe and Meal Planner CLI!")
-        print("1. Add a Recipe")
-        print("2. View Recipes")
-        print("3. Create a Meal Plan")
-        print("4. Exit")
+    """Display the main menu and prompt the user for a choice."""
+    print("Welcome to the Recipe and Meal Planner CLI!")
+    print("1. Create a Recipe")
+    print("2. View Recipes")
+    print("3. Create a Meal Plan")
+    print("4. Exit")
+    choice = input("Please select an option: ")
+    return choice
 
-        choice = input("Choose an option: ")
+def run_cli():
+    """Run the command line interface."""
+    init_db()  # Initialize the database
+    while True:
+        choice = main_menu()
         if choice == '1':
-            add_recipe()
+            create_recipe()
         elif choice == '2':
             view_recipes()
         elif choice == '3':
             create_meal_plan()
         elif choice == '4':
-            print("Goodbye!")
+            print("Exiting the application.")
             sys.exit()
         else:
             print("Invalid choice. Please try again.")
 
-def add_recipe():
-    name = input("Enter recipe name: ")
-    instructions = input("Enter instructions: ")
-    category = input("Enter category (e.g., breakfast, lunch): ")
-    
-    # Create a new recipe instance
-    new_recipe = Recipe(name=name, instructions=instructions, category=category)
-    session.add(new_recipe)
-    session.commit()
-    print(f"Recipe '{name}' added successfully.")
+def create_recipe():
+    """Function to create a new recipe."""
+    # Implementation for creating a recipe
+    pass
 
 def view_recipes():
-    recipes = session.query(Recipe).all()
-    for recipe in recipes:
-        print(recipe)
+    """Function to view all recipes."""
+    # Implementation for viewing recipes
+    pass
 
 def create_meal_plan():
-    print("Feature to create a meal plan coming soon...")
+    """Function to create a meal plan."""
+    # Implementation for creating a meal plan
+    pass
 
 if __name__ == "__main__":
-    main_menu()
+    run_cli()
