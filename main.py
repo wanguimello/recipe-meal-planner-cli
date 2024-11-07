@@ -3,8 +3,8 @@ from models.recipe import Recipe
 #from models.ingredient import Ingredient
 #from models.meal_plan import MealPlan
 from database.setup import session
-from models.meal_plan_recipes import Meal_Plan_Recipes  
-
+# from models.meal_plan_recipes import Meal_Plan_Recipes  
+ 
 def main_menu():
     while True:
         print("Welcome to the Recipe and Meal Planner CLI!")

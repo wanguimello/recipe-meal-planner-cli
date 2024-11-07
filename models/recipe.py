@@ -2,7 +2,8 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from database.setup import Base
-from meal_plan_recipes import meal_plan_recipes
+from .meal_plan_recipes import meal_plan_recipes
+from .ingredient import Ingredient
 
 class Recipe(Base):
     # Define table name
@@ -16,6 +17,8 @@ class Recipe(Base):
 
     # Define relationship with Ingredient model
     ingredients = relationship('Ingredient', back_populates='recipe')
+
+    
 
     # Define relationship with MealPlan model
     meal_plans = relationship('MealPlan', secondary=meal_plan_recipes, back_populates='recipes')

@@ -13,6 +13,7 @@ class Ingredient(Base):
 
     # Link to Recipe
     recipe = relationship("Recipe", back_populates="ingredients")
+    
 
     def __repr__(self):
         return f"<Ingredient(name='{self.name}', quantity='{self.quantity}')>"
